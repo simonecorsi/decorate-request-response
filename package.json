@@ -1,0 +1,60 @@
+{
+  "name": "@scdev/decorate-request-response",
+  "version": "1.0.0-0",
+  "description": "This package allow for decorating request and/or response objects without modifying the shape of the object on each requests.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "repository": {
+    "url": "https://github.com/simonecorsi/decorate-request-response"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "test": "tap",
+    "coverage": "tap --coverage-report=html",
+    "prepare": "is-ci || husky install"
+  },
+  "keywords": [
+    "nodejs",
+    "decorate",
+    "request",
+    "response",
+    "http",
+    "server",
+    "github",
+    "nodejs",
+    "javascript",
+    "md",
+    "js",
+    "esnext",
+    "node",
+    "npm"
+  ],
+  "author": "Simone Corsi <simonecorsi.dev@gmail.com>",
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/node": "^16.11.1",
+    "@types/tap": "^15.0.5",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^6.0.0",
+    "is-ci": "^3.0.0",
+    "lint-staged": "^11.2.0",
+    "markdown-toc": "^1.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.2",
+    "tap": "^15.0.10",
+    "typescript": "^4.3.5"
+  }
+}
