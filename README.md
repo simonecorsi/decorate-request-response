@@ -35,7 +35,14 @@ const { createServer } = require('http');
 const decorate = require('@scdev/decorate-request-response');
 const { IncomingMessage, ServerResponse } = decorate({
   request: ['user'],
-  response: ['user'],
+  response: [
+    [
+      'json',
+      function (data) {
+        this.end(JSON.stringify(data));
+      },
+    ],
+  ],
 });
 
 createServer(
