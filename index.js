@@ -1,5 +1,15 @@
 const { IncomingMessage, ServerResponse } = require('http');
 
+function setFields(obj, fields) {
+  for (const field of fields) {
+    if (Array.isArray(field)) {
+      obj[field[0]] = field[1];
+    } else {
+      obj[field] = null;
+    }
+  }
+}
+
 module.exports = (options) => {
   if (typeof options !== 'object')
     throw new TypeError('Options must be an object');
@@ -8,15 +18,13 @@ module.exports = (options) => {
 
   const obj = {};
 
-  // TODO Implement filtering to avoid overriding exisint.
+  // TODO Implement filtering to avoid overriding existing.
 
   if (Array.isArray(request) && request.length) {
     obj['IncomingMessage'] = class extends IncomingMessage {
       constructor(...args) {
         super(...args);
-        for (const field of request) {
-          this[field] = null;
-        }
+        setFields(this, request);
       }
     };
   }
@@ -24,9 +32,7 @@ module.exports = (options) => {
     obj['ServerResponse'] = class extends ServerResponse {
       constructor(...args) {
         super(...args);
-        for (const field of response) {
-          this[field] = null;
-        }
+        setFields(this, response);
       }
     };
   }

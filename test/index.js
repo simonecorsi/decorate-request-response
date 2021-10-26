@@ -24,6 +24,22 @@ tap.test('decorate', (t) => {
   t.end();
 });
 
+tap.test('decorate with custom values', (t) => {
+  t.throws(() => decorate(), TypeError);
+  function toJson(data) {
+    return JSON.stringify(data);
+  }
+  const { IncomingMessage, ServerResponse } = decorate({
+    request: [['json', toJson]],
+    response: [['json', toJson]],
+  });
+  const incomingMessage = new IncomingMessage();
+  const serverResponse = new ServerResponse(incomingMessage);
+  t.equal(incomingMessage.json, toJson);
+  t.equal(serverResponse.json, toJson);
+  t.end();
+});
+
 tap.test('decorate http server', (t) => {
   t.plan(1);
   const server = http.createServer(
