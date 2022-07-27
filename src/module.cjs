@@ -18,8 +18,6 @@ module.exports = (options) => {
 
   const obj = {};
 
-  // TODO Implement filtering to avoid overriding existing.
-
   if (Array.isArray(request) && request.length) {
     obj['IncomingMessage'] = class extends IncomingMessage {
       constructor(...args) {

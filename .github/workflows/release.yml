@@ -1,37 +1,25 @@
 name: Release
 
-on:
-  push:
-    branches: master
+on: [workflow_dispatch]
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: bahmutov/npm-install@v1
-      - run: npm t
-
-  version:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/checkout@v2
+          node-version: 16
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        run: npm i
 
       - name: Semantic release
         uses: codfish/semantic-release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.npm_token }}
+          GIT_AUTHOR_NAME: '${{ github.actor }}'
+          GIT_COMMITTER_NAME: '${{ github.actor }}'

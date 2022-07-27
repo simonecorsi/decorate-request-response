@@ -1,6 +1,6 @@
 const http = require('http');
 const tap = require('tap');
-const decorate = require('../index.js');
+const decorate = require('../src/index.cjs');
 
 tap.test('decorate', (t) => {
   t.throws(() => decorate(), TypeError);
