@@ -19,7 +19,7 @@
   "scripts": {
     "test": "tap",
     "coverage": "tap --coverage-report=html",
-    "prepare": "is-ci || husky install",
+    "prepare": "node prepare.mjs || echo \"Skip prepare\"",
     "types": "tsc --allowJs -d --emitDeclarationOnly src/index.cjs"
   },
   "keywords": [
@@ -46,24 +46,18 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
     "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/commit-analyzer": "^9.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.0",
-    "@semantic-release/npm": "^12.0.0",
-    "@semantic-release/release-notes-generator": "^14.0.0",
-    "@types/node": "^22.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "husky": "^9.0.2",
-    "is-ci": "^4.1.0",
-    "lint-staged": "^15.0.1",
+    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/npm": "^10.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.2",
+    "@types/node": "^18.6.1",
+    "lefthook": "^1.11.3",
     "markdown-toc": "^1.2.0",
-    "prettier": "^3.0.0",
-    "tap": "^21.0.0"
+    "tap": "^16.3.0"
   }
 }
